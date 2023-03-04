@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rancher-logo-ingress
+  namespace: logos
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+    - secretName: logos-bss-iconicompany-com
+      hosts:
+        - logos.bss.iconicompany.com
+  rules:
+  - host: logos.bss.iconicompany.com
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: rancher-logo-service
+            port:
+              number: 80

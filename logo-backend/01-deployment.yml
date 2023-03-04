@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rancher-logo-app
+  namespace: logos
+spec:
+  selector:
+    matchLabels:
+      name: rancher-logo-backend
+  template:
+    metadata:
+      labels:
+        name: rancher-logo-backend
+    spec:
+      containers:
+        - name: backend
+          image: ruanbekker/logos:rancher
+          ports:
+            - containerPort: 80
