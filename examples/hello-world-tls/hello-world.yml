@@ -20,7 +20,7 @@ spec:
         - hello.bss.iconicompany.com
   rules:
   - host: hello.bss.iconicompany.com
-  - http:
+    http:
       paths:
       - path: /
         pathType: Prefix

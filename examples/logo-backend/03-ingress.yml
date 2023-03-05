@@ -13,7 +13,7 @@ spec:
         - logos.bss.iconicompany.com
   rules:
   - host: logos.bss.iconicompany.com
-  - http:
+    http:
       paths:
       - path: /
         pathType: Prefix
