@@ -1,0 +1,24 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    additionalArguments:
+      - "--api"
+      - "--api.dashboard=true"
+      - "--api.insecure=true"
+      - "--log.level=DEBUG"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls=true"
+      - "--entrypoints.websecure.http.tls.certResolver=http"
+      - "--certificatesresolvers.http.acme.tlschallenge"
+      - "--certificatesresolvers.http.acme.email=certbot@iconicompany.com"
+      - "--certificatesresolvers.http.acme.storage=/letsencrypt/acme.json"
+    ports:
+      traefik:
+        expose: true
+    providers:
+      kubernetesCRD:
+        allowCrossNamespace: true
