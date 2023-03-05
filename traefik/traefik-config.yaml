@@ -16,9 +16,3 @@ spec:
       - "--certificatesresolvers.http.acme.tlschallenge"
       - "--certificatesresolvers.http.acme.email=certbot@iconicompany.com"
       - "--certificatesresolvers.http.acme.storage=/letsencrypt/acme.json"
-    ports:
-      traefik:
-        expose: true
-    providers:
-      kubernetesCRD:
-        allowCrossNamespace: true
